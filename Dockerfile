@@ -5,7 +5,8 @@ FROM node:14.17.5-alpine AS build
 WORKDIR /app
 
 # Copy and install app dependencies
-COPY package.json package-lock.json ./
+COPY frontend/package.json ./
+COPY frontend/package-lock.json ./
 RUN npm ci
 
 # Copy app source

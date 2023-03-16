@@ -29,23 +29,23 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
 
-- name: Deploy to VPS
-  env:
-    VPS_HOST: ${{ secrets.VPS_HOST }}
-    VPS_USER: ${{ secrets.VPS_USERNAME }}
-    VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-    VPS_SSH_PRIVATE_KEY_PASSPHRASE: ${{ secrets.VPS_SSH_PRIVATE_KEY_PASSPHRASE }}
-  run: |
-    echo "${{ env.VPS_SSH_PRIVATE_KEY }}" > private_key
-    echo "${{ env.VPS_SSH_PRIVATE_KEY_PASSPHRASE }}" > passphrase
-    chmod 600 private_key
-    eval "$(ssh-agent -s)"
-    ssh-add -p passphrase private_key < /dev/null
-    rm -f private_key passphrase
-    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ env.VPS_USER }}@${{ env.VPS_HOST }} <<-EOF
-      docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
-      docker stop boogiedk.me || true
-      docker rm boogiedk.me || true
-      docker run -d --name boogiedk.me -p 3000:3000 ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
-    EOF
+    - name: Deploy to VPS
+      env:
+        VPS_HOST: ${{ secrets.VPS_HOST }}
+        VPS_USER: ${{ secrets.VPS_USERNAME }}
+        VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+        VPS_SSH_PRIVATE_KEY_PASSPHRASE: ${{ secrets.VPS_SSH_PRIVATE_KEY_PASSPHRASE }}
+      run: |
+        echo "${{ env.VPS_SSH_PRIVATE_KEY }}" > private_key
+        echo "${{ env.VPS_SSH_PRIVATE_KEY_PASSPHRASE }}" > passphrase
+        chmod 600 private_key
+        eval "$(ssh-agent -s)"
+        ssh-add -p passphrase private_key < /dev/null
+        rm -f private_key passphrase
+        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ env.VPS_USER }}@${{ env.VPS_HOST }} <<-EOF
+          docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
+          docker stop boogiedk.me || true
+          docker rm boogiedk.me || true
+          docker run -d --name boogiedk.me -p 3000:3000 ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
+        EOF

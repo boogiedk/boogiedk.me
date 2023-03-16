@@ -1,31 +1,21 @@
-# Base image
-FROM node:14.17.5-alpine AS build
+FROM node:14
 
-# Set working directory
 WORKDIR /app
 
-# Copy and install app dependencies
-COPY frontend/package.json ./
-COPY frontend/package-lock.json ./
-RUN npm ci
+COPY frontend/package*.json ./
 
-# Copy app source
-COPY . .
+RUN npm install
 
-# Build app
+COPY frontend/ ./
+
 RUN npm run build
 
-# Create production image
-FROM node:14.17.5-alpine
+FROM nginx:stable-alpine
 
-# Set working directory
-WORKDIR /app
+COPY --from=0 /app/build /usr/share/nginx/html
 
-# Copy built files from previous build stage
-COPY --from=build /app/build ./build
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port 3000
-EXPOSE 3000
+EXPOSE 80
 
-# Start the app
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]

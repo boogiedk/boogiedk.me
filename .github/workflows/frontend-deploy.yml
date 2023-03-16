@@ -48,3 +48,4 @@ jobs:
       docker stop boogiedk.me || true
       docker rm boogiedk.me || true
       docker run -d --name boogiedk.me -p 3000:3000 ${{ secrets.DOCKER_HUB_USERNAME }}/boogiedk.me:latest
+    EOF

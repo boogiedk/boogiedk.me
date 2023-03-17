@@ -1,4 +1,4 @@
-FROM node:14 as build-stage
+FROM node:14
 
 WORKDIR /app
 
@@ -12,8 +12,7 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-COPY --from=build-stage /app/build /usr/share/nginx/html
-//COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=0 /app/build /usr/share/nginx/html
 
 EXPOSE 3000
 

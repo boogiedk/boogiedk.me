@@ -13,7 +13,7 @@ RUN npm run build
 FROM nginx:stable-alpine
 
 COPY --from=0 /app/build /usr/share/nginx/html
-COPY frontend/nginx-boogiedk_me.conf /etc/nginx/conf.d/default.conf
+COPY nginx-boogiedk_me.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
 

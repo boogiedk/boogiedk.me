@@ -33,13 +33,13 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
-    marginRight: -drawerWidth,
+    marginTop: 64, // Высота AppBar
     ...(open && {
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        marginRight: 0,
+        marginLeft: drawerWidth,
     }),
 }));
 
@@ -50,6 +50,7 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
+    zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -62,7 +63,8 @@ const AppBar = styled(MuiAppBar, {
         }),
         marginRight: drawerWidth,
     }),
-    backgroundColor:'#413f0f'
+    backgroundColor: 'white',
+    color: 'black'
 }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -114,7 +116,7 @@ export default function PersistentDrawerRight() {
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
-                    },
+                    }
                 }}
                 variant="persistent"
                 anchor="right"
@@ -127,7 +129,11 @@ export default function PersistentDrawerRight() {
                 </DrawerHeader>
                 <Divider/>
                 <List>
-                    <ListItem key={'Главная страница'} disablePadding onClick={()=> history('/')}>
+                    <ListItem key={'Главная страница'} disablePadding onClick={()=> {
+                        history('/');
+                        handleDrawerClose();
+                    }
+                    }>
                         <ListItemButton>
                             <ListItemIcon>
                                 <HomeIcon/>
@@ -135,7 +141,12 @@ export default function PersistentDrawerRight() {
                             <ListItemText primary={'Главная страница'}/>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem key={'Сервисы'} disablePadding onClick={()=> history('/services')}>
+                    <ListItem key={'Сервисы'} disablePadding onClick={
+                        () => {
+                            history('/services');
+                            handleDrawerClose();
+                        }
+                    }>
                         <ListItemButton>
                             <ListItemIcon>
                                 <MiscellaneousServicesIcon/>

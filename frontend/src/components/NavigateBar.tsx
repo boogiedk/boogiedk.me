@@ -28,7 +28,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     open?: boolean;
 }>(({ theme, open }) => ({
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
     transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -129,7 +129,7 @@ export default function PersistentDrawerRight() {
                 </DrawerHeader>
                 <Divider/>
                 <List>
-                    <ListItem key={'Главная страница'} disablePadding onClick={()=> {
+                    <ListItem key={'Home'} disablePadding onClick={()=> {
                         history('/');
                         handleDrawerClose();
                     }
@@ -138,10 +138,10 @@ export default function PersistentDrawerRight() {
                             <ListItemIcon>
                                 <HomeIcon/>
                             </ListItemIcon>
-                            <ListItemText primary={'Главная страница'}/>
+                            <ListItemText primary={'Home'}/>
                         </ListItemButton>
                     </ListItem>
-                    <ListItem key={'Сервисы'} disablePadding onClick={
+                    <ListItem key={'Services'} disablePadding onClick={
                         () => {
                             history('/services');
                             handleDrawerClose();
@@ -151,7 +151,7 @@ export default function PersistentDrawerRight() {
                             <ListItemIcon>
                                 <MiscellaneousServicesIcon/>
                             </ListItemIcon>
-                            <ListItemText primary={'Сервисы'}/>
+                            <ListItemText primary={'Services'}/>
                         </ListItemButton>
                     </ListItem>
                 </List>

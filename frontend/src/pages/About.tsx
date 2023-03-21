@@ -56,12 +56,12 @@ function About() {
                     </li>
                     <hr className={"hr-experience"}/>
                     <li>
-                        <h3>IML, July 2018 to Febrary 2020</h3>
+                        <h3>IML, July 2018 to Febrary 2019</h3>
                         <p><b>Location:</b> Moscow, iml.ru/</p>
                         <p><b>Domain:</b> Transportation, logistics, warehouse, foreign economic activity, Courier, postal delivery</p>
                         <p><b>Job title:</b> Junior Fullstack Developer</p>
                         <br/>
-                        <p>Developed and implemented new functionality for the fiscalization service and made contributions to the courier workplace project. Also briefly worked with WebForms, maintained the mobile application written in Java, and developed and optimized internal API services. From March 2020, I worked remotely.</p>
+                        <p>Developed and implemented new functionality for the fiscalization service and made contributions to the courier workplace project. Also briefly worked with WebForms, maintained the mobile application written in Java, and developed and optimized internal API services.</p>
                     </li>
                 </ul>
             </section>

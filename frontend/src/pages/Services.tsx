@@ -6,7 +6,7 @@ function Services() {
   return (
       <div className="ServicesPage">
           <div>
-              <h1>Сервисы</h1>
+              <h1>Services</h1>
           </div>
       <div>
           <ServiceListComponent />

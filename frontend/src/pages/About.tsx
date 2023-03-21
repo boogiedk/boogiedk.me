@@ -16,9 +16,11 @@ function About() {
                 <div className="header-info">
                     <h1>Kulkin Dmitry</h1>
                     <p>Software Engineer</p>
-                    <p>25 years old</p>
-                    <p>Russia, Moscow</p>
+                    <br/>
+                    <p><b>Age</b>: 25 years old</p>
+                    <p><b>Location</b>: Russia, Moscow</p>
                 <div className="description">
+                    <p><b>About me:</b></p>
                    <p>I’m a software developer with 4+ years of experience in commercial software development.
                   Microservices, SRE, build application architecture and web application development.</p>
                 </div>
@@ -35,7 +37,7 @@ function About() {
                     <li>
                         <div>
                             <h3>MTS Digital, September 2021 to until now</h3>
-                            <p><b>Location:</b> Moscow, moskva.mts.ru/</p>
+                            <p><b>Location:</b> Russia, Moscow, moskva.mts.ru/</p>
                             <p><b>Domain:</b> Information technology, systems integration, internet</p>
                             <p><b>Job title:</b> Senior Backend Developer</p>
                             <br/>
@@ -46,8 +48,8 @@ function About() {
                     </li>
                     <hr className={"hr-experience"}/>
                     <li>
-                        <h3>TOPCASE, October 2019 to August 2022</h3>
-                        <p><b>Location:</b> Moscow, www.itopcase.ru/</p>
+                        <h3>TOPCASE, October 2019 to August 2021</h3>
+                        <p><b>Location:</b> Russia, Moscow, www.itopcase.ru/</p>
                         <p><b>Domain:</b> Systems integration, automation of technological and business processes of enterprises, IT consulting</p>
                         <p><b>Job title:</b> Middle FullStack Developer</p>
                         <br/>
@@ -57,7 +59,7 @@ function About() {
                     <hr className={"hr-experience"}/>
                     <li>
                         <h3>IML, July 2018 to Febrary 2019</h3>
-                        <p><b>Location:</b> Moscow, iml.ru/</p>
+                        <p><b>Location:</b> Russia, Moscow, iml.ru/</p>
                         <p><b>Domain:</b> Transportation, logistics, warehouse, foreign economic activity, Courier, postal delivery</p>
                         <p><b>Job title:</b> Junior Fullstack Developer</p>
                         <br/>

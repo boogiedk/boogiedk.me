@@ -14,7 +14,7 @@ function About() {
                     </div>
                     </div>
                 <div className="header-info">
-                    <h1>Kulkin Dmitry</h1>
+                    <h1>Dmitry K.</h1>
                     <p>Software Engineer</p>
                     <br/>
                     <p><b>Age</b>: 25 years old</p>
@@ -36,7 +36,7 @@ function About() {
                 <ul>
                     <li>
                         <div>
-                            <h3>MTS Digital, September 2021 to until now</h3>
+                            <h3>MTS Digital, September 2021 until now</h3>
                             <p><b>Location:</b> Russia, Moscow, moskva.mts.ru/</p>
                             <p><b>Domain:</b> Information technology, systems integration, internet</p>
                             <p><b>Job title:</b> Senior Backend Developer</p>

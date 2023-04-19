@@ -31,11 +31,11 @@ enum ServiceState {
 function getStatus(serviceState: ServiceState) {
     switch (serviceState) {
         case ServiceState.Active:
-            return <div>Активный</div>
+            return <div>Online</div>
         case ServiceState.InDeveloping:
-            return <div>В разработке</div>;
+            return <div>In Developing</div>;
         case ServiceState.Offline:
-            return <div>Отключен</div>;
+            return <div>Offline</div>;
     }
 }
 
@@ -69,7 +69,7 @@ function ServiceComponent({name, description, serviceLink, serviceState, service
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Button href={serviceLink}>Перейти</Button>
+                            <Button target={"_blank"} href={serviceLink}>Go to</Button>
                         </Grid>
                     </Grid>
                     <Grid item>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css';
+import {getWorkExperience, getYearsOld} from "../infrastructure/globalVariables";
 
 function About() {
     return (
@@ -17,11 +18,11 @@ function About() {
                     <h1>Dmitry K.</h1>
                     <p>Software Engineer</p>
                     <br/>
-                    <p><b>Age</b>: 25 years old</p>
+                    <p><b>Age</b>: {getYearsOld()} years old</p>
                     <p><b>Location</b>: Russia, Moscow</p>
                 <div className="description">
                     <p><b>About me:</b></p>
-                   <p>I’m a software developer with 4+ years of experience in commercial software development.
+                   <p>I’m a software developer with {getWorkExperience()}+ years of experience in commercial software development.
                   Microservices, SRE, build application architecture and web application development.</p>
                 </div>
                 </div>
@@ -81,8 +82,8 @@ function About() {
                     <hr className={"hr-experience"}/>
                     <li>
                         <b>Degree:</b> Bachelor's degree in Information Security, 2016-2020<br/>
-                       <b>University:</b> Russian Technological University, Moscow <br/>
-                       <b>Departament:</b> Institute of Complex Security and Special Instrumentation
+                        <b>University:</b> Russian Technological University, Moscow <br/>
+                        <b>Departament:</b> Institute of Complex Security and Special Instrumentation
                     </li>
                 </ul>
             </div>
@@ -96,7 +97,10 @@ function About() {
                         <p>Habr: <a href="https://habr.com/ru/users/boogiedk" target="_blank">Dmitry K. @boogiedk</a></p>
                     </li>
                     <li>
-                        <p>LeetCode: <a href="https://leetcode.com/" target="_blank">boogiedk</a></p>
+                        <p>LeetCode: <a href="https://leetcode.com/boogiedk/" target="_blank">boogiedk</a></p>
+                    </li>
+                    <li>
+                        <p>Linkedin: <a href="https://www.linkedin.com/in/dmitry-kulkin-a3640818b/" target="_blank">Dmitry K.</a></p>
                     </li>
                 </ul>
             </section>

@@ -154,6 +154,19 @@ export default function PersistentDrawerRight() {
                             <ListItemText primary={'Services'}/>
                         </ListItemButton>
                     </ListItem>
+                    <ListItem key={'Map'} disablePadding onClick={
+                        () => {
+                            history('/map');
+                            handleDrawerClose();
+                        }
+                    }>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <MiscellaneousServicesIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={'Map (alpha)'}/>
+                        </ListItemButton>
+                    </ListItem>
                 </List>
             </Drawer>
         </Box>

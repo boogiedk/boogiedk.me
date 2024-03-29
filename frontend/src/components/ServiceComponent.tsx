@@ -19,7 +19,8 @@ type ServiceProps = {
     description: string,
     serviceLink: string,
     serviceState: ServiceState,
-    serviceLogo?: string
+    serviceLogo?: string,
+    stack: string
 }
 
 enum ServiceState {
@@ -39,7 +40,7 @@ function getStatus(serviceState: ServiceState) {
     }
 }
 
-function ServiceComponent({name, description, serviceLink, serviceState, serviceLogo = gear} : ServiceProps) {
+function ServiceComponent({name, description, serviceLink, serviceState, serviceLogo = gear, stack} : ServiceProps) {
     return (
         <Paper
             sx={{
@@ -47,7 +48,8 @@ function ServiceComponent({name, description, serviceLink, serviceState, service
                 ml:'auto',
                 mr:'auto',
                 mb:'40px',
-                maxWidth: '80%',
+                maxWidth: '40%',
+                alignContent:'left',
                 backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff'
             }}
@@ -67,15 +69,14 @@ function ServiceComponent({name, description, serviceLink, serviceState, service
                             <Typography variant="body2" color="text.secondary">
                                 {description}
                             </Typography>
+                            {" "}
+                            <Typography variant="body2" color="text.secondary">
+                                Stack: {stack}
+                            </Typography>
                         </Grid>
                         <Grid item>
                             <Button target={"_blank"} href={serviceLink}>Go to</Button>
                         </Grid>
-                    </Grid>
-                    <Grid item>
-                        <Typography variant="subtitle1" component="div">
-                            {getStatus(serviceState)}
-                        </Typography>
                     </Grid>
                 </Grid>
             </Grid>

@@ -8,11 +8,16 @@ function ServiceListComponent() {
              name={"Currency Chum"}
              serviceLink={"https://curchum.ru"}
              serviceState={1}
-             description=
-                 {"Currency Chum is a service for converting currencies of CIS countries. " +
-                 "The peculiarity of the service is to store the conversion history, as well as use the last current exchange rate of a particular currency stored on the user's device in order to be able to convert the currency regardless of whether there is Internet access or not. " +
-                     "The service uses the official API of the state central banks."}
+             description = {"Currency Chum is a service for converting currencies of CIS countries. "}
+             stack = {"Net Core 7, C#, React, Typescript"}
          ></ServiceComponent>
+            <ServiceComponent
+                name={"Serf bot"}
+                serviceLink={"https://github.com/boogiedk/SerfBot"}
+                serviceState={1}
+                description = {"A personal assistant written in F#, predominantly used as a client to the Open AI Api (ChatGPT)."}
+                stack = {"Net Core 8, F#"}
+            ></ServiceComponent>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import {StyledEngineProvider} from "@mui/material/styles";
 import NavigateBar from "./components/NavigateBar";
+import AccessibleMapComponent from "./components/AccessibleMapComponent";
 
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
                 <Routes>
                     <Route path="/" element={<About />} />
                     <Route path="/services" element={<Services />} />
+                    <Route path="/map" element={<AccessibleMapComponent />} />
                 </Routes>
             </BrowserRouter>
         );

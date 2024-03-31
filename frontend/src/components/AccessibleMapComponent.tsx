@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, {useEffect, useState} from "react";
 import { fromLonLat, transform } from "ol/proj";
 import { LineString, Point } from "ol/geom";
 import { Polyline } from "ol/format";
@@ -6,6 +6,8 @@ import "ol/ol.css";
 
 import { RMap, ROSM, RLayerVector, RFeature } from "rlayers";
 import { RStyle, RCircle, RFill, RStroke } from "rlayers/style";
+import LocationComponent from "./LocationComponent";
+
 
 // This example uses the free Nominatim service of OpenStreetMap which is subject to very strict usage rules
 // https://operations.osmfoundation.org/policies/nominatim/
@@ -116,6 +118,7 @@ export default function Routing(): JSX.Element {
                 </RLayerVector>
             </RMap>
             <div className="mx-0 mt-0 mb-3 p-1 w-100 jumbotron shadow shadow">
+                {<LocationComponent />}
                 <p>
                     <strong>
                         Select {step === Step.START ? "START" : "FINISH"} point

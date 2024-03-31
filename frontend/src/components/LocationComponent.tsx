@@ -25,11 +25,17 @@ const LocationComponent: React.FC = () => {
         getLocation();
     }, []);
 
+    const yandexUrl = `https://yandex.ru/maps/?rtext=~${coordinates?.latitude}C${coordinates?.longitude}`
+    const yandexUrlv2 = `https://yandex.com/maps/?rtext=${coordinates?.latitude}%2C${coordinates?.longitude}~55.586500%2C37.434101&rtt=pd`;
+
     return (
         <div>
-            {coordinates ? (
+            {
+                coordinates ? (
                 <p>
                     Latitude: {coordinates.latitude}, Longitude: {coordinates.longitude}
+                    <br></br>
+                    <a href={yandexUrlv2}>Построить маршрут</a>
                 </p>
             ) : (
                 <p>Loading...</p>

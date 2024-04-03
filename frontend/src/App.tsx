@@ -6,9 +6,13 @@ import Services from "./pages/Services";
 import {StyledEngineProvider} from "@mui/material/styles";
 import NavigateBar from "./components/NavigateBar";
 import AccessibleMapComponent from "./components/AccessibleMapComponent";
-
+import WayMain from "./pages/WayMain";
+import WayCreateMeet from "./pages/WayCreateMeet";
+import WayMeet from "./pages/WayMeet";
+import BackendMockService from "./services/BackendMockService";
 
 class App extends React.Component {
+    
     render() {
         return (
             <BrowserRouter>
@@ -18,7 +22,9 @@ class App extends React.Component {
                 <Routes>
                     <Route path="/" element={<About />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/map" element={<AccessibleMapComponent />} />
+                    <Route path="/where-are-you" element={<WayMain />} />
+                    <Route path="/create-meet" element={<WayCreateMeet />} />
+                    <Route path="/meet/:meedId" element={<WayMeet />} />
                 </Routes>
             </BrowserRouter>
         );

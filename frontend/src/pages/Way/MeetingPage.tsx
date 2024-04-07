@@ -35,7 +35,7 @@ const MeetingPage: React.FC = () => {
         // Добавляем текущего пользователя в список присоединившихся
         const newParticipant: Participant = {
             id: `User_${participants.length + 1}`,
-            name: `User_${participants.length + 1}`, // Генерируем имя на основе ID
+            name: `Участник ${participants.length + 1}`, // Генерируем имя на основе ID
         };
 
         const updatedParticipants = [...participants, newParticipant];

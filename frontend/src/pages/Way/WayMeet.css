@@ -7,26 +7,26 @@
   margin-bottom: 16px;
 }
 
-h2 {
+.meet-h2 {
   margin-bottom: 8px;
   color: #333;
 }
 
-p {
+.meet-p {
   margin-bottom: 12px;
 }
 
-a {
+.meet-a {
   display: block;
   color: #007bff;
   margin-bottom: 12px;
   text-decoration: none;
 }
 
-a:hover {
+.meet-a:hover {
   text-decoration: underline;
 }
 
-strong {
+.meet-strong {
   font-weight: bold;
 }

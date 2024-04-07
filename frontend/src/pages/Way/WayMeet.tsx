@@ -10,10 +10,10 @@ const MeetingDetailsPage: React.FC = () => {
 
     return (
         <div className="meet-card">
-            <p><strong>Идентификатор встречи:</strong> {meet.meetId}</p>
-            <h2>{meet.title}</h2>
-            <p>{meet.description}</p>
-            <a href={meet.mapsLink} target="_blank" rel="noopener noreferrer">
+            <p className="meet-p"><strong>Идентификатор встречи:</strong> {meet.meetId}</p>
+            <h2 className="meet-h2">{meet.title}</h2>
+            <p className="meet-p">{meet.description}</p>
+            <a className="meet-a" href={meet.mapsLink} target="_blank" rel="noopener noreferrer">
                 Место встречи (Яндекс.Карта)
             </a>
             <MeetingPage />

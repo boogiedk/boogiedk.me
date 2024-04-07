@@ -6,9 +6,9 @@ import Services from "./pages/Services";
 import {StyledEngineProvider} from "@mui/material/styles";
 import NavigateBar from "./components/NavigateBar";
 import AccessibleMapComponent from "./components/AccessibleMapComponent";
-import WayMain from "./pages/WayMain";
-import WayCreateMeet from "./pages/WayCreateMeet";
-import WayMeet from "./pages/WayMeet";
+import WayMain from "./pages/Way/WayMain";
+import WayCreateMeet from "./pages/Way/WayCreateMeet";
+import WayMeet from "./pages/Way/WayMeet";
 import BackendMockService from "./services/BackendMockService";
 
 class App extends React.Component {

@@ -32,9 +32,7 @@ const LocationComponent: React.FC = () => {
             {
                 coordinates ? (
                 <p>
-                    Latitude: {coordinates.latitude}, Longitude: {coordinates.longitude}
-                    <br></br>
-                    <a href={yandexUrl}>Построить маршрут</a>
+                    <a href={yandexUrl}>Где участник?</a>
                 </p>
             ) : (
                 <p>Loading...</p>

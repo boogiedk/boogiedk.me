@@ -1,5 +1,4 @@
 ﻿import React from "react";
-import LocationComponent from "../components/LocationComponent";
 import './WayMain.css';
 import {Button} from "@mui/material";
 import Grid from "@mui/material/Grid";

@@ -12,10 +12,9 @@ import {
     Typography,
     TextField,
 } from '@mui/material';
-import BackendMockService from "../services/BackendMockService";
-import backendMockService from "../services/BackendMockService";
+import backendMockService from "../../services/BackendMockService";
 import { useNavigate } from 'react-router-dom';
-import {CreateMeetModel} from "../types/CreateMeetModel";
+import {CreateMeetModel} from "../../types/CreateMeetModel";
 
 
 
@@ -47,7 +46,7 @@ const MeetingForm: React.FC = () => {
         }
 
         if (!formData.agreement) {
-            newErrors.agreement = false;
+            newErrors.agreement = true;
         }
 
         setErrors(newErrors);

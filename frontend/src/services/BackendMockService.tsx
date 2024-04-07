@@ -6,11 +6,11 @@ interface CreateMeetResponse {
 }
 
 const meetModel: MeetModel = {
-    meetId:'',
-    title: '',
-    description: '',
-    mapsLink: '',
-    agreement: false,
+    meetId:'e3d4cc47-e548-4e4f-b902-750e524fafd3',
+    title: 'Гуляем по ТЦ',
+    description: 'тц галерея',
+    mapsLink: 'https://yandex.ru/maps/org/galleria_minsk/1338341926/?ll=27.548427%2C53.908538&z=14',
+    agreement: true,
 };
 
 const viewMeetModel: CreateMeetModel = {

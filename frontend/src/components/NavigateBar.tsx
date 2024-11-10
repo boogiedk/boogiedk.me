@@ -156,7 +156,7 @@ export default function PersistentDrawerRight() {
                     </ListItem>
                     <ListItem key={'WhereAreYou'} disablePadding onClick={
                         () => {
-                            history('/where-are-you');
+                            history('/services/where-are-you');
                             handleDrawerClose();
                         }
                     }>

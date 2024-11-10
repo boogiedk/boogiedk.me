@@ -1,61 +1,103 @@
 ﻿// MeetingPage.tsx
 
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import { Modal, Button, List, ListItem, ListItemText, Backdrop, Box } from '@mui/material';
 import Cookies from 'js-cookie';
-import LocationComponent from "../../components/LocationComponent";
+import LocationComponent from "../../../components/LocationComponent";
+import {IMeet, meetService} from "../../../services/MeetSevice";
+import {MeetModel} from "../../../types/CreateMeetModel";
 
 interface Participant {
     id: string;
     name: string;
+    isActive: boolean;
 }
 
-const MeetingPage: React.FC = () => {
+interface MeetingPageProps {
+    meetId?: string;
+}
+
+const MeetingPage: React.FC<MeetingPageProps> = ({ meetId: propMeetId }) => {
+    const { meetId } = useParams<{ meetId: string }>();
     const location = useLocation();
     const history = useNavigate();
     const [joined, setJoined] = useState<boolean>(false);
     const [participants, setParticipants] = useState<Participant[]>([]);
+    const [meetLatitude, setLatitude] = useState<string | undefined>(undefined); 
+    const [meetLongitude, setLongitude] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         const hasJoined = Cookies.get('hasJoinedMeeting');
         if (hasJoined) {
             setJoined(true);
-            loadParticipants(); // Загружаем список участников при загрузке
+            loadParticipants();
+            loadMeet(meetId!);
         }
     }, []);
+    
+    const loadMeet = async (meetId: string) => {
+        const meet = await meetService.getMeetById(meetId!);
+        const coords = meet.mapLink.split(", ");
+        setLatitude(coords[0]);  // Обновляем состояние
+        setLongitude(coords[1]); // Обновляем состояние
+        console.log("Latitude:", coords[0]);
+        console.log("Longitude:", coords[1]);
+    }
 
-    const loadParticipants = () => {
-        // Эмуляция загрузки списка участников с сервера
-        const savedParticipants = JSON.parse(localStorage.getItem('meetingParticipants') || '[]');
-        setParticipants(savedParticipants);
+    const loadParticipants = async () => {
+        const members = await meetService.getMembers(meetId!)
+        const mappedMembers = members.map(member => ({
+            id: member.memberId,
+            name: member.memberName,
+            isActive: member.isActive
+        }));
+        setParticipants(mappedMembers);
     };
 
-    const handleJoinMeeting = () => {
+    const handleJoinMeeting = async () => {
         // Добавляем текущего пользователя в список присоединившихся
-        const newParticipant: Participant = {
-            id: `User_${participants.length + 1}`,
-            name: `Участник ${participants.length + 1}`, // Генерируем имя на основе ID
-        };
-
-        const updatedParticipants = [...participants, newParticipant];
-        setParticipants(updatedParticipants);
-
-        // Сохраняем список участников в localStorage
-        localStorage.setItem('meetingParticipants', JSON.stringify(updatedParticipants));
-
+        
+        const time = new Date();
+        let latitude = 0;
+        let longitude = 0;
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+            });
+        }
+        
+        var memberId = crypto.randomUUID();
+        
+        await meetService.addMemberToMeet(meetId!.toUpperCase(), {
+            memberId: memberId, 
+            memberName: `Участник ${time}`, 
+            coordinateLat: latitude, 
+            coordinateLon: longitude,
+            isActive: true
+        });
+        
         // Устанавливаем флаг о присоединении в куки
+        loadParticipants()
         Cookies.set('hasJoinedMeeting', 'true');
+        Cookies.set('memberId', memberId);
         setJoined(true);
     };
 
-    const handleLeaveMeeting = () => {
+    const handleLeaveMeeting = async () => {
         // Удаляем флаг о присоединении из куков
         Cookies.remove('hasJoinedMeeting');
 
         // Очищаем список участников и localStorage
         setParticipants([]);
         localStorage.removeItem('meetingParticipants');
+        
+        console.log(meetId!.toUpperCase())
+        console.log(Cookies.get('memberId'))
+
+        await meetService.updateMember(meetId!.toUpperCase(), Cookies.get('memberId')!, {isActive: false});
 
         // Перенаправляем пользователя на главную страницу
         history(`/`);
@@ -95,8 +137,8 @@ const MeetingPage: React.FC = () => {
             <List>
                 {participants.map((participant) => (
                     <ListItem key={participant.id}>
-                        <ListItemText primary={participant.name} secondary={`ID: ${participant.id}`} />
-                        <LocationComponent />
+                        <ListItemText primary={participant.name} secondary={`ID: ${participant.id} IsActive: ${participant.isActive}`} /> 
+                        <LocationComponent latitude={meetLatitude!} longitude={meetLongitude!} />
                     </ListItem>
                 ))}
             </List>

@@ -7,16 +7,12 @@ import {
     FormControlLabel,
     FormGroup,
     FormHelperText,
-    Input,
-    InputLabel,
     Typography,
     TextField,
 } from '@mui/material';
-import backendMockService from "../../services/BackendMockService";
 import { useNavigate } from 'react-router-dom';
 import {CreateMeetModel} from "../../types/CreateMeetModel";
-
-
+import {ICreateMeet, meetService} from "../../services/MeetSevice";
 
 const initialFormData: CreateMeetModel = {
     title: '',
@@ -53,20 +49,41 @@ const MeetingForm: React.FC = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (validateForm()) {
-            let service = backendMockService.createMeet(formData);
-
-            history(`/meet/${service.MeetId}`);
-            // Отправка данных на бэкенд
-            console.log('Данные отправлены:', formData);
-            // Мокирование отправки данных на бэкенд
-            console.log('Mock отправленных данных:', JSON.stringify(formData));
-            // Очистка формы после успешной отправки
+            let latitude = 0;
+            let longitude = 0;
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
+                });
+            }
+            
+            const createMeetModel : ICreateMeet = {
+                title: formData.title,
+                description: formData.description,
+                mapLink: formData.mapsLink,
+                members: [
+                    {
+                        memberName: "Создатель встречи",
+                        coordinateLat: latitude,
+                        coordinateLon: longitude
+                    }
+                ]
+                
+            }
+            let createdMeet = await meetService.createMeet(createMeetModel);
+            history(`/services/where-are-you/meet/${createdMeet.meetId}`);
             setFormData(initialFormData);
         }
+    };
+
+    const getLocation = () => {
+        
     };
 
     const handleChange = (key: keyof CreateMeetModel, value: string | boolean) => {

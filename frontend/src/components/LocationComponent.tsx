@@ -1,11 +1,22 @@
 ﻿import React, { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
 
 interface Coordinates {
     latitude: number;
     longitude: number;
 }
 
-const LocationComponent: React.FC = () => {
+interface DestinationCoordinates {
+    latitude: string;
+    longitude: string;
+}
+
+
+const LocationComponent: React.FC<DestinationCoordinates> = ({latitude, longitude}) => {
+    
+    console.log(latitude);
+    console.log(longitude);
+    
     const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
 
     const getLocation = () => {
@@ -25,7 +36,8 @@ const LocationComponent: React.FC = () => {
         getLocation();
     }, []);
 
-    const yandexUrl =  `https://yandex.com/maps/?rtext=${coordinates?.latitude}%2C${coordinates?.longitude}~55.586500%2C37.434101&rtt=pd`;
+    const yandexUrl =  `https://yandex.com/maps/?rtext=${coordinates?.latitude}%2C${coordinates?.longitude}~${latitude}%2C${longitude}&rtt=pd`;
+    console.log(yandexUrl)
 
     return (
         <div>

@@ -119,7 +119,7 @@ export default function Routing(): JSX.Element {
             </RMap>
             <div className="mx-0 mt-0 mb-3 p-1 w-100 jumbotron shadow shadow">
 
-                {<LocationComponent />}
+                
                 <p>
                     <strong>
                         Select {step === Step.START ? "START" : "FINISH"} point

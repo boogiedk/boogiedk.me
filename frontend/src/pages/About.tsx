@@ -38,7 +38,7 @@ function About() {
                 <ul>
                     <li>
                         <div>
-                            <h3>MTS Digital, September 2021 until January 2025</h3>
+                            <h3>MTS Digital, September 2021 to January 2025</h3>
                             <p><b>Location:</b> Russia, Moscow, moskva.mts.ru/</p>
                             <p><b>Domain:</b> Information technology, systems integration, internet</p>
                             <p><b>Job title:</b> Senior Backend Developer</p>

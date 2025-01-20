@@ -48,7 +48,7 @@ function ServiceComponent({name, description, serviceLink, serviceState, service
                 ml:'auto',
                 mr:'auto',
                 mb:'40px',
-                maxWidth: '40%',
+                maxWidth: '70%',
                 alignContent:'left',
                 backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff'

@@ -3,10 +3,14 @@ export const birthDate = new Date("1998-01-19");
 
 export const dateTimeNow = new Date();
 
+const millisecondToYearConstant = 31536000000
+
 export function getWorkExperience() {
-    return dateTimeNow.getFullYear() - startWork.getFullYear();
+    let time = dateTimeNow.getTime() - startWork.getTime();
+    return Math.floor(time / millisecondToYearConstant)
 }
 
 export function getYearsOld() {
-    return dateTimeNow.getFullYear() - birthDate.getFullYear();
+    let time = dateTimeNow.getTime() - birthDate.getTime();
+    return Math.floor(time / millisecondToYearConstant)
 }

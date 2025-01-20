@@ -1,13 +1,14 @@
 import React from 'react';
 import './About.css';
 import {getWorkExperience, getYearsOld} from "../infrastructure/globalVariables";
+import avatar from "../images/anonymous-avatar-icon.png"
 
 function About() {
     return (
         <div className="container">
             <header>
                 <div className="photo">
-                    <img src="https://via.placeholder.com/150" alt="Photo"/>
+                    <img src={avatar} alt="Photo"/>
                     <div className="contacts">
                     <p>Telegram: <a href="https://t.me/boogiedk" target="_blank">@boogiedk</a></p>
                     <p>E-mail: boogiedkjob@gmail.com</p>
@@ -37,14 +38,14 @@ function About() {
                 <ul>
                     <li>
                         <div>
-                            <h3>MTS Digital, September 2021 until now</h3>
+                            <h3>MTS Digital, September 2021 until January 2025</h3>
                             <p><b>Location:</b> Russia, Moscow, moskva.mts.ru/</p>
                             <p><b>Domain:</b> Information technology, systems integration, internet</p>
                             <p><b>Job title:</b> Senior Backend Developer</p>
                             <br/>
-                            <p>Served as a lead backend developer in the MasterHub team, where we created an information system for subscribing to our own MTS services and partner services such as Spotify, Youtube, Tinder, and OZON. The project consisted entirely of microservices (about 30) on Net Core 3.1 - Net 5.0. My contributions included implementing features such as basic authentication for sending notifications to partners, developing mutually exclusive groups for the convergent service,
-                                and
-                                optimizing SQL queries in Dapper. Additionally, I resolved technical debt, conducted deadlock investigations, and launched a device installment purchase service. Our technology stack includes ELK, Docker, K8S, RabbitMQ, MS SQL, and Dapper.</p>
+                            <p>I worked on subscription service for MTS, integrating with partners like Spotify, YouTube, and Tinder, and developed core backend functionalities using a microservices architecture (.Net Core, Kafka, RabbitMQ, MSSQL/PostgreSQL). 
+                                My work included implementing new features, optimizing database performance, and integrating with external systems to enhance the platform's capabilities. 
+                                Later, as a Tech Lead/CTO, I led a team of 15 developers, managed migrations to cloud infrastructure, improved system observability, addressed technical debt, planned releases, and ensured the product's readiness for technical reviews and operational support.</p>
                         </div>
                     </li>
                     <hr className={"hr-experience"}/>

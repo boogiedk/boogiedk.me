@@ -17,10 +17,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import { useNavigate } from 'react-router-dom';
-import {hexToRgb, rgbToHex} from "@mui/material";
+import { Link } from '@mui/material'; 
 
 const drawerWidth = 240;
 
@@ -95,7 +94,9 @@ export default function PersistentDrawerRight() {
             <AppBar position="fixed" open={open}>
                 <Toolbar>
                     <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-                        boogiedk.me
+                        <Link href="/" color="inherit" underline="none">
+                            boogiedk.me
+                        </Link>
                     </Typography>
                     <IconButton
                         color="inherit"
@@ -152,19 +153,6 @@ export default function PersistentDrawerRight() {
                                 <MiscellaneousServicesIcon/>
                             </ListItemIcon>
                             <ListItemText primary={'Services'}/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'WhereAreYou'} disablePadding onClick={
-                        () => {
-                            history('/services/where-are-you');
-                            handleDrawerClose();
-                        }
-                    }>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <MiscellaneousServicesIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary={'WhereAreYou? (alpha)'}/>
                         </ListItemButton>
                     </ListItem>
                 </List>

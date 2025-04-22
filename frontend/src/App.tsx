@@ -1,33 +1,38 @@
-import * as React from 'react'
-import {Await, BrowserRouter, Route, Routes} from 'react-router-dom'
-import Main from "./pages/Main";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import {StyledEngineProvider} from "@mui/material/styles";
-import NavigateBar from "./components/NavigateBar";
-import AccessibleMapComponent from "./components/AccessibleMapComponent";
-import WayMain from "./pages/Way/WayMain";
-import WayCreateMeet from "./pages/Way/WayCreateMeet";
-import WayMeet from "./pages/Way/pages/MeetingPage";
-import BackendMockService from "./services/BackendMockService";
+import React from 'react';
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { StyledEngineProvider } from "@mui/material/styles";
+import { useTheme } from './hooks/useTheme';
+import { routes } from './routes';
+import NavigateBar from './components/NavigateBar';
+import './styles/variables.css';
+import './App.css';
 
-class App extends React.Component {
-    
-    render() {
-        return (
-            <BrowserRouter>
-                <StyledEngineProvider injectFirst>
-                    <NavigateBar />
-                </StyledEngineProvider>
-                <Routes>
-                    <Route path="/" element={<About />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/services/where-are-you" element={<WayMain />} />
-                    <Route path="/services/where-are-you/create-meet" element={<WayCreateMeet />} />
-                    <Route path="/services/where-are-you/meet/:meetId" element={<WayMeet />} />
-                </Routes>
-            </BrowserRouter>
-        );
-    }
+const AppRoutes = () => {
+  const routeElements = useRoutes(routes);
+  return routeElements;
+};
+
+function App() {
+  const { theme, setTheme } = useTheme();
+
+  React.useEffect(() => {
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
+  }, [theme]);
+
+  return (
+    <LanguageProvider>
+      <Router>
+        <StyledEngineProvider injectFirst>
+          <div className="App">
+            <NavigateBar theme={theme} setTheme={setTheme} />
+            <AppRoutes />
+          </div>
+        </StyledEngineProvider>
+      </Router>
+    </LanguageProvider>
+  );
 }
+
 export default App;

@@ -1,0 +1,119 @@
+:root {
+  transition: background-color var(--transition-duration) var(--transition-timing),
+              color var(--transition-duration) var(--transition-timing);
+}
+
+:root.light {
+  background-color: var(--color-background-light);
+  color: var(--color-text-light);
+}
+
+:root.dark {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: var(--font-family);
+}
+
+body {
+  background-color: inherit;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background-color: inherit;
+}
+
+/* Override Material-UI styles for dark theme */
+:root.dark .MuiAppBar-root {
+  background-color: var(--color-background-dark) !important;
+  color: var(--color-text-dark) !important;
+}
+
+:root.dark .MuiDrawer-paper {
+  background-color: var(--color-background-dark) !important;
+  color: var(--color-text-dark) !important;
+}
+
+:root.dark .MuiListItemButton-root:hover {
+  background-color: var(--color-hover-dark) !important;
+}
+
+:root.dark .MuiIconButton-root {
+  color: var(--color-text-dark) !important;
+}
+
+:root.dark .MuiTypography-root {
+  color: var(--color-text-dark) !important;
+}
+
+:root.dark .MuiLink-root {
+  color: var(--color-text-dark) !important;
+}
+
+/* Page styles */
+:root.dark .MainPage,
+:root.dark .ServicesPage,
+:root.dark .AboutPage,
+:root.dark .container,
+:root.dark .section,
+:root.dark .section-heading,
+:root.dark .photo,
+:root.dark .header-info,
+:root.dark .description,
+:root.dark .contacts,
+:root.dark .hr-sections,
+:root.dark .hr-experience,
+:root.dark ul,
+:root.dark li {
+  background-color: var(--color-background-dark) !important;
+  color: var(--color-text-dark) !important;
+  border-color: var(--color-border-dark) !important;
+}
+
+:root.light .MainPage,
+:root.light .ServicesPage,
+:root.light .AboutPage,
+:root.light .container,
+:root.light .section,
+:root.light .section-heading,
+:root.light .photo,
+:root.light .header-info,
+:root.light .description,
+:root.light .contacts,
+:root.light .hr-sections,
+:root.light .hr-experience,
+:root.light ul,
+:root.light li {
+  background-color: var(--color-background-light) !important;
+  color: var(--color-text-light) !important;
+  border-color: var(--color-border-light) !important;
+}
+
+/* Remove white margins */
+.MuiContainer-root {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+.MuiBox-root {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Style for dividers */
+:root.dark .MuiDivider-root {
+  background-color: var(--color-border-dark) !important;
+}
+
+:root.light .MuiDivider-root {
+  background-color: var(--color-border-light) !important;
+} 

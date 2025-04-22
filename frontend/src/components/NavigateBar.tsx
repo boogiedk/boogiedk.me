@@ -19,7 +19,12 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import { useNavigate } from 'react-router-dom';
-import { Link } from '@mui/material'; 
+import { Link } from '@mui/material';
+import { useLanguage } from '../hooks/useLanguage';
+import { useTranslate } from '../hooks/useTranslate';
+import { LanguageToggle } from './LanguageToggle';
+import { ThemeToggle } from './ThemeToggle';
+import { Theme } from '../types/theme';
 
 const drawerWidth = 240;
 
@@ -75,10 +80,17 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-start'
 }));
 
-export default function PersistentDrawerRight() {
-    const theme = useTheme();
+interface Props {
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+}
+
+export default function NavigateBar({ theme, setTheme }: Props) {
+    const muiTheme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const history = useNavigate();
+    const navigate = useNavigate();
+    const { language } = useLanguage();
+    const t = useTranslate(language);
     
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -98,6 +110,8 @@ export default function PersistentDrawerRight() {
                             boogiedk.me
                         </Link>
                     </Typography>
+                    <ThemeToggle theme={theme} setTheme={setTheme} />
+                    <LanguageToggle />
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -125,34 +139,20 @@ export default function PersistentDrawerRight() {
             >
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        {muiTheme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider/>
                 <List>
                     <ListItem key={'Home'} disablePadding onClick={()=> {
-                        history('/');
+                        navigate('/');
                         handleDrawerClose();
-                    }
-                    }>
+                    }}>
                         <ListItemButton>
                             <ListItemIcon>
                                 <HomeIcon/>
                             </ListItemIcon>
-                            <ListItemText primary={'Home'}/>
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem key={'Services'} disablePadding onClick={
-                        () => {
-                            history('/services');
-                            handleDrawerClose();
-                        }
-                    }>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <MiscellaneousServicesIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary={'Services'}/>
+                            <ListItemText primary={t('home')}/>
                         </ListItemButton>
                     </ListItem>
                 </List>

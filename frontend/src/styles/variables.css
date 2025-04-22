@@ -1,0 +1,41 @@
+:root {
+  /* Colors */
+  --color-primary: #1976d2;
+  --color-secondary: #dc004e;
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-text-light: #000000;
+  --color-text-dark: #ffffff;
+  --color-border-light: #ccc;
+  --color-border-dark: #333;
+  --color-hover-light: rgba(0, 0, 0, 0.04);
+  --color-hover-dark: rgba(255, 255, 255, 0.08);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Typography */
+  --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-timing: ease;
+
+  /* Breakpoints */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1920px;
+} 

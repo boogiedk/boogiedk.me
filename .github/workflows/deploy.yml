@@ -44,4 +44,4 @@ jobs:
             set -e
             docker pull ${{ env.IMAGE }}:${{ github.sha }}
             docker rm -f boogiedk.me || true
-            docker run -d --name boogiedk.me --restart unless-stopped -p 3000:3000 ${{ env.IMAGE }}:${{ github.sha }}
+            docker run -d --name boogiedk.me --restart unless-stopped -p 127.0.0.1:3000:3000 ${{ env.IMAGE }}:${{ github.sha }}

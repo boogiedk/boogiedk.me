@@ -1,37 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
-import { LanguageProvider } from './contexts/LanguageContext';
-import { StyledEngineProvider } from "@mui/material/styles";
-import { useTheme } from './hooks/useTheme';
-import { routes } from './routes';
-import NavigateBar from './components/NavigateBar';
-import './styles/variables.css';
-import './App.css';
-
-const AppRoutes = () => {
-  const routeElements = useRoutes(routes);
-  return routeElements;
-};
+import { Profile } from './components/Profile';
+import { Section } from './components/Section';
+import { Timeline } from './components/Timeline';
+import { resume } from './content/resume';
 
 function App() {
-  const { theme, setTheme } = useTheme();
-
-  React.useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-  }, [theme]);
-
   return (
-    <LanguageProvider>
-      <Router>
-        <StyledEngineProvider injectFirst>
-          <div className="App">
-            <NavigateBar theme={theme} setTheme={setTheme} />
-            <AppRoutes />
-          </div>
-        </StyledEngineProvider>
-      </Router>
-    </LanguageProvider>
+    <main className="page">
+      <Profile
+        name={resume.name}
+        role={resume.role}
+        facts={resume.facts}
+        summary={resume.summary}
+        email={resume.email}
+        links={resume.links}
+      />
+      <div className="page__content">
+        <Section title="Experience">
+          <Timeline entries={resume.experience} />
+        </Section>
+        <Section title="Education">
+          <Timeline entries={resume.education} />
+        </Section>
+        <footer className="page__footer">© {new Date().getFullYear()} boogiedk.me</footer>
+      </div>
+    </main>
   );
 }
 
